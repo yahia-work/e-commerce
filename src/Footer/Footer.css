@@ -1,3 +1,4 @@
+
 .footer{
     background-color: #2b2b2b;
     padding: 20px 10%;
@@ -11,13 +12,19 @@
 .footer h3{
     font-family: cursive;
 }
+
 .footer-infos{
     border-bottom:1px solid rgb(88, 84, 84);
     justify-content: space-between;
 }
+
 .contact-email-footer{
     flex-direction: column;
     gap: 5px;
+}
+
+.copy-right{
+    justify-content: space-between;
 }
 
 @media (max-width: 800px){

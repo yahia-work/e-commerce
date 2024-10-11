@@ -16,13 +16,10 @@
     gap: 20px;
 }
 
-
 .envoyer-button{
     width: 200px;
     height: 45px;
 }
-
-
 
 .contact-icons{
     gap: 20px;
@@ -31,6 +28,11 @@
 
 .fb-icon , .insta-icon{
     width: 30px;
+    transition: .3s;
+}
+
+.fb-icon:hover , .insta-icon:hover{
+    scale: 1.02;
 }
 
 @media (max-width: 1100px){

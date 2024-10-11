@@ -1,7 +1,7 @@
 
+import facebook from "../images/facebook.png";
+import instagram from "../images/instagram.png";
 import "./Footer.css"
-import { FaFacebookSquare } from "react-icons/fa";
-
 
 function Footer(){
     return(
@@ -15,7 +15,13 @@ function Footer(){
                     <p>hiyacollection@gmail.com</p>
                 </div>
             </div>
-            <p>© 2024 - All rights reserved.</p>
+            <div className="copy-right flex">
+                <p>© 2024 - All rights reserved.</p>
+                <div className="contact-icons flex"> 
+                    <img src={instagram} className="insta-icon pointer"/>
+                    <img src={facebook} className="fb-icon pointer"/>
+                </div>
+            </div>
         </div>
     )
 }

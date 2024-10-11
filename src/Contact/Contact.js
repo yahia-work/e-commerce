@@ -13,8 +13,8 @@ function Contact(){
                 <div>Service client :</div>
                 <div>hiyacollection@gmail.com</div>
                 <div className="contact-icons flex"> 
-                    <img src={instagram} className="insta-icon"/>
-                    <img src={facebook} className="fb-icon"/>
+                    <img src={instagram} className="insta-icon pointer"/>
+                    <img src={facebook} className="fb-icon pointer"/>
                 </div>
             </div>
             <div className="contactez-nous flex">
