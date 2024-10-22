@@ -42,13 +42,6 @@ const products = [
         description:"La robe Disney est confectionnée en tissu Mazirati de haute qualité, offrant confort et élégance. C'est la pièce idéale pour toutes les occasions, alliant style et durabilité."
     },
     {
-        name:"Ensemble Mirane",
-        model:"Ensemble",
-        price:"5.000DZD",
-        img:productImg15,
-        description:"L'ensemble Mirane est confectionnée en tissu Mazirati de haute qualité, offrant confort et élégance. C'est la pièce idéale pour toutes les occasions, alliant style et durabilité."
-    },
-    {
         name:"Robe Farawla",
         model:"Robe",
         price:"2.900DZD",
