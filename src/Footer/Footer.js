@@ -18,8 +18,13 @@ function Footer(){
             <div className="copy-right flex">
                 <p>© 2024 - All rights reserved.</p>
                 <div className="contact-icons flex"> 
-                    <img src={instagram} className="insta-icon pointer"/>
-                    <img src={facebook} className="fb-icon pointer"/>
+                    
+                    <a href="https://www.instagram.com/y_store35/" target="_blank" rel="noopener noreferrer">
+                        <img src={instagram} className="insta-icon pointer"/>
+                    </a>
+                    <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
+                        <img src={facebook} className="fb-icon pointer" alt="Instagram Icon" />
+                    </a>
                 </div>
             </div>
         </div>
