@@ -3,7 +3,8 @@ import React, { useEffect, useState,useContext } from 'react';
 import {  useLocation } from 'react-router-dom';
 import QuantityInput from "../components/NumberInput";
 import Button from '@mui/material/Button';
-import { PanierContext } from '../Context/PanierContext';
+import { PanierContext } from '../Context/PanierContext'; 
+import { Link } from 'react-router-dom';
 
 import productImg1 from "../images/productImg1.jpg"
 import productImg8 from "../images/productImg8.jpg"
@@ -15,76 +16,77 @@ import productImg13 from "../images/productImg13.jpg"
 import productImg14 from "../images/productImg14.jpg"
 import productImg15 from "../images/productImg15.jpg"
 
-import Products from "../Products/Products";
+import Products from "../Products/Products"; 
 
 const products = [
     {
+        id:1,
         name:"Robe Farawla",
         model:"Robe",
-        price:"2.900DZD",
+        price:2900,
         img:productImg8,
         description:"La robe Farawla est confectionnée en tissu Mazirati de haute qualité, offrant confort et élégance. C'est la pièce idéale pour toutes les occasions, alliant style et durabilité."
     },
     {
+        id:2,
         name:"Robe Talline",
         model:"Robe",
-        price:"2.900DZD",
+        price:2900,
         img:productImg9,
         description:"La robe Talline est confectionnée en tissu Mazirati de haute qualité, offrant confort et élégance. C'est la pièce idéale pour toutes les occasions, alliant style et durabilité."
     },
     {
+        id:3,
         name:"Robe Disney",
         model:"Robe",
-        price:"2.900DZD",
+        price:2900,
         img:productImg10,
         description:"La robe Disney est confectionnée en tissu Mazirati de haute qualité, offrant confort et élégance. C'est la pièce idéale pour toutes les occasions, alliant style et durabilité."
     },
     {
-        name:"Ensemble Mirane",
-        model:"Ensemble",
-        price:"5.000DZD",
-        img:productImg15,
-        description:"L'ensemble Mirane est confectionnée en tissu Mazirati de haute qualité, offrant confort et élégance. C'est la pièce idéale pour toutes les occasions, alliant style et durabilité."
-    },
-    {
+        id:4,
         name:"Robe Farawla",
         model:"Robe",
-        price:"2.900DZD",
+        price:2900,
         img:productImg12,
         description:"La robe Farawla est confectionnée en tissu Mazirati de haute qualité, offrant confort et élégance. C'est la pièce idéale pour toutes les occasions, alliant style et durabilité."
     },
     {
+        id:5,
         name:"Robe Farawla",
         model:"Robe",
-        price:"2.900DZD",
+        price:2900,
         img:productImg11,
         description:"La robe Farawla est confectionnée en tissu Mazirati de haute qualité, offrant confort et élégance. C'est la pièce idéale pour toutes les occasions, alliant style et durabilité."
     },
     {
+        id:6,
         name:"Abaya classique",
         model:"Abaya",
-        price:"2.900DZD",
+        price:2900,
         img:productImg14,
         description:"Abaya classique est confectionnée en tissu Mazirati de haute qualité, offrant confort et élégance. C'est la pièce idéale pour toutes les occasions, alliant style et durabilité."
     },
     {
+        id:7,
         name:"Robe Farawla",
         model:"Robe",
-        price:"2.900DZD",
+        price:2900,
         img:productImg1,
         description:"La robe Farawla est confectionnée en tissu Mazirati de haute qualité, offrant confort et élégance. C'est la pièce idéale pour toutes les occasions, alliant style et durabilité."
     }
     ,
     {
+        id:8,
         name:"Robe Farawla",
         model:"Robe",
-        price:"2.900DZD",
+        price:2900,
         img:productImg13,
         description:"La robe Farawla est confectionnée en tissu Mazirati de haute qualité, offrant confort et élégance. C'est la pièce idéale pour toutes les occasions, alliant style et durabilité."
     }
 ]
-function Product() {
-    const {Produits,handelAdd} = useContext(PanierContext);  
+
+function Product() {  
     const location = useLocation();      
     const { product } = location.state;
     const [tailleSelected, settailleSelected] = useState("");
@@ -122,8 +124,17 @@ function Product() {
 
     useEffect(() => {
         window.scrollTo(0, 0);
+        settailleSelected("");
+        setQuantity(1)
     }, [product]);
 
+    const {Produits,handelAdd} = useContext(PanierContext);
+    const addProduct = (p, q,t) => {
+        if(t.length>0){
+            handelAdd({ ...p, quantite: q,taille:t });    
+        }
+        else alert("selectionner la taille")
+    };
     return (
         <div className="product flex">
             <div className="cmnd-product flex">
@@ -132,7 +143,7 @@ function Product() {
                     <div className="caracteristiques flex">
                         <div className="product-model">{product.model} </div>
                         <div>{product.name} </div> 
-                        <div className="">{product.price} </div>
+                        <div className="">{product.price}DZD </div>
                     </div>
                     <div className="description-detaille">
                         {product.description}
@@ -142,7 +153,7 @@ function Product() {
                     </div>
                     <div className="list-detaille flex">
                         {
-                            ["36", "38", "40", "42"].map((item, index) => {
+                            ["36", "38", "40", "42","44","46","48"].map((item, index) => {
                                 return (
                                     <TailleItem 
                                         key={index}
@@ -156,10 +167,10 @@ function Product() {
                         }
                     </div>
                     <QuantityInput value={quantity} onChange={setQuantity} />
-                    <Button style={{backgroundColor:"black"}} 
-                            variant="contained" 
+                    <Button style={{backgroundColor:"black"}}
+                            variant="contained"
                             className="ajouter-au-panier"
-                            onClick={()=>handelAdd(1)}
+                            onClick={()=>addProduct(product,quantity,tailleSelected)}
                     >
                         Ajouter au panier
                     </Button>
@@ -173,7 +184,6 @@ function Product() {
                 {
                     listProd && <Products products={listProd}/>
                 }
-                
             </div>
         </div>
     )

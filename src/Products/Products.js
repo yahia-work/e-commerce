@@ -17,7 +17,7 @@ function Products({products=[]}){
                             </Link>
                             <div className="product-model pointer">{product.model}</div> 
                             <div className="product-name pointer">{product.name}</div> 
-                            <div className="product-price">{product.price}</div>  
+                            <div className="product-price">{product.price}DZD</div>  
                         </div>
                     )
                 })

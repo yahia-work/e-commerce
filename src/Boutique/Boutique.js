@@ -1,4 +1,4 @@
-import { useState, useRef,useEffect } from "react";
+import { useState, useRef,useEffect  } from "react";
 import React from 'react';
 import "./Boutique.css";
 import { IoIosArrowUp } from "react-icons/io";
@@ -21,59 +21,67 @@ import Products from "../Products/Products";
 
 const products = [
     {
+        id:1,
         name:"Robe Farawla",
         model:"Robe",
-        price:"2.900DZD",
+        price:2900,
         img:productImg8,
         description:"La robe Farawla est confectionnée en tissu Mazirati de haute qualité, offrant confort et élégance. C'est la pièce idéale pour toutes les occasions, alliant style et durabilité."
     },
     {
+        id:2,
         name:"Robe Talline",
         model:"Robe",
-        price:"2.900DZD",
+        price:2900,
         img:productImg9,
         description:"La robe Talline est confectionnée en tissu Mazirati de haute qualité, offrant confort et élégance. C'est la pièce idéale pour toutes les occasions, alliant style et durabilité."
     },
     {
+        id:3,
         name:"Robe Disney",
         model:"Robe",
-        price:"2.900DZD",
+        price:2900,
         img:productImg10,
         description:"La robe Disney est confectionnée en tissu Mazirati de haute qualité, offrant confort et élégance. C'est la pièce idéale pour toutes les occasions, alliant style et durabilité."
     },
     {
+        id:4,
         name:"Robe Farawla",
         model:"Robe",
-        price:"2.900DZD",
+        price:2900,
         img:productImg12,
         description:"La robe Farawla est confectionnée en tissu Mazirati de haute qualité, offrant confort et élégance. C'est la pièce idéale pour toutes les occasions, alliant style et durabilité."
     },
     {
+        id:5,
         name:"Robe Farawla",
         model:"Robe",
-        price:"2.900DZD",
+        price:2900,
         img:productImg11,
         description:"La robe Farawla est confectionnée en tissu Mazirati de haute qualité, offrant confort et élégance. C'est la pièce idéale pour toutes les occasions, alliant style et durabilité."
     },
     {
+        id:6,
         name:"Abaya classique",
         model:"Abaya",
-        price:"2.900DZD",
+        price:2900,
         img:productImg14,
         description:"Abaya classique est confectionnée en tissu Mazirati de haute qualité, offrant confort et élégance. C'est la pièce idéale pour toutes les occasions, alliant style et durabilité."
     },
     {
+        id:7,
         name:"Robe Farawla",
         model:"Robe",
-        price:"2.900DZD",
+        price:2900,
         img:productImg1,
         description:"La robe Farawla est confectionnée en tissu Mazirati de haute qualité, offrant confort et élégance. C'est la pièce idéale pour toutes les occasions, alliant style et durabilité."
     }
     ,
     {
+        id:8,
         name:"Robe Farawla",
         model:"Robe",
-        price:"2.900DZD",
+        price:2900,
         img:productImg13,
         description:"La robe Farawla est confectionnée en tissu Mazirati de haute qualité, offrant confort et élégance. C'est la pièce idéale pour toutes les occasions, alliant style et durabilité."
     }
@@ -105,7 +113,7 @@ function Boutique() {
         const tailleRef = useRef(null);
         const couleurRef = useRef(null);
         const prixRef = useRef(null);
-        
+
         return(
             <div className={className}>
                 {/* Categorie */}
@@ -192,6 +200,8 @@ function Boutique() {
             document.body.style.backgroundColor = "";
         };
     }, [filterStatus]);
+
+   
     return (
         <div className="Boutique flex">
             

@@ -9,6 +9,8 @@ import Faq from './Faq/Faq';
 import Contact from './Contact/Contact';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Product from './Product/Product';
+import CarteCommande from './CarteCommande/CarteComamnde';
+import ValiderCommande from './ValiderCommande/ValiderCommande';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -21,6 +23,7 @@ root.render(
         <Route path="apropre" element={<Apropre />} />
         <Route path="faq" element={<Faq />} />
         <Route path="contact" element={<Contact />} />
+        <Route path="valider-commandes" element={<ValiderCommande/>} />
       </Route>
     </Routes>
   </BrowserRouter>

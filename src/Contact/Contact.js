@@ -18,8 +18,7 @@ function Contact(){
                 </div>
             </div>
             <div className="contactez-nous flex">
-                <TextField label="Nom" variant="outlined" />
-                <TextField label="Address E-mail" variant="outlined" />
+                <TextField label="Nom" variant="outlined" /> 
                 <TextField label="Telephone" variant="outlined" />
                 <TextField label="Sujet" variant="outlined" />
                 <TextField
