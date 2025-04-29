@@ -100,7 +100,6 @@ function Acceuil(){
                 </div>
             </div>
             <div className="container-products flex">
-                <h3>Collections de </h3>
                 <h3 style={{fontFamily: "cursive"}}>
                     Y_STORE35
                 </h3>
