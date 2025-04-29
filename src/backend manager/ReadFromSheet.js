@@ -2,8 +2,9 @@
 import axios from 'axios';
 
 export const ReadFromSheet = async ({ sheet, filter = {} }) => {
+  const backendUrl = process.env.REACT_APP_BACKEND_URL;
   try {
-    const response = await axios.post(`https://backend-site-two.vercel.app/read`,{ sheet, filter });
+    const response = await axios.post(`${backendUrl}/read`,{ sheet, filter });
     return response.data;
   } catch (error) {
     if (error.response) {
