@@ -79,7 +79,7 @@
 }
 
 
-.filter-autocomplet{
+.select-filter{
     width: 30%;
 }
 
@@ -97,7 +97,7 @@
         align-items: center;
         border-bottom: 1px solid rgb(235, 235, 235);
     }
-    .filter-autocomplet{
+    .select-filter{
         width: 100%;
     }
 }
@@ -138,7 +138,7 @@
         width: 100%;
         margin-bottom: 20px;
     }
-    .filter-autocomplet{
+    .select-filter{
         width: 100%;
     }
 }
@@ -155,7 +155,7 @@
         gap: 20px;
         width: 100%;
     }
-    .filter-autocomplet{
+    .select-filter{
         width: 100%;
     }
 }

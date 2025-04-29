@@ -3,8 +3,7 @@ import { useState, useEffect } from 'react';
 import { ReadFromSheet } from '../backend manager/ReadFromSheet';
 import SelectCheck from "../components/SelectCheck";
 import Products from "../Products/Products";
-import AutocompleteSelect from '../components/Autocomplet';
-
+ 
 import images from '../images/images';
 
 function Acceuil(){
@@ -95,13 +94,13 @@ function Acceuil(){
                     <h3 style={{fontFamily: "cursive"}} >
                         Y_STORE35 Collection
                     </h3>
-                    <AutocompleteSelect     
-                        label={"Filter"} 
-                        value={filterSelected} 
-                        setValue={setfilterSelected}
-                        options={["Tous","Abaya","Robe","Ensemble"]}   
-                        className="filter-autocomplet"
-                    /> 
+                    <SelectCheck    label={"Filter"}
+                                    value={filterSelected}
+                                    setvalue={setfilterSelected}
+                                    list={["Tous","Abaya","Robe","Ensemble"]}
+                                    style={{}}
+                                    className="select-filter"
+                    />
                 </div>
                 
                 <Products products={produits}/>
