@@ -14,7 +14,7 @@ function Prix() {
 
     const columnsConfig = [
         { key: 'code wilaya', label: 'Code' },
-        { key: 'nom wilaya', label: 'wilaya' },
+        { key: 'nom wilaya', label: 'Nom de la wilaya' },
         { key: 'stop desk', label: 'Stop Desk' },
         { key: 'a domicile', label: 'A domicile' },
     ];
