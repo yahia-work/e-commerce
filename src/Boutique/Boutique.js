@@ -6,6 +6,7 @@ import Checkbox from '@mui/material/Checkbox';
 import SelectCheck from "../components/SelectCheck";
 import { IoFilter } from "react-icons/io5";
 import { GoX } from "react-icons/go";
+import { ReadFromSheet } from '../backend manager/ReadFromSheet';
 
 import productImg1 from "../images/productImg1.jpg"
 import productImg8 from "../images/productImg8.jpg"
@@ -18,6 +19,9 @@ import productImg14 from "../images/productImg14.jpg"
 import productImg15 from "../images/productImg15.jpg"
 
 import Products from "../Products/Products";
+
+
+import images from '../images/images';
 
 const products = [
     {
@@ -104,84 +108,73 @@ function Boutique() {
     };
     
     const Config = ({className=""})=>{
-        const [isUpCat, setisUpCat] = useState(false);
-        const [isUpTaille, setisUpTaille] = useState(false);
-        const [isUpCouleur, setisUpCouleur] = useState(false);
-        const [isUpPrix, setisUpPrix] = useState(false);
-
-        const catRef = useRef(null);
-        const tailleRef = useRef(null);
-        const couleurRef = useRef(null);
-        const prixRef = useRef(null);
-
+       
         return(
             <div className={className}>
                 {/* Categorie */}
-                <div className="item-config flex pointer" onClick={() => toggleHeight(catRef, isUpCat, setisUpCat)}>
+                <div className="item-config flex pointer">
                     Categorie
-                    <IoIosArrowUp className={`up-item-config ${isUpCat ? "rotated" : ""}`} />
                 </div>
-                <div className="config" ref={catRef}>
-                    
-                    <div className='categorie-config flex'>
+                <div className='categorie-config flex'>
                         <Checkbox />
                         Abaya
                     </div>
-                    <div className='categorie-config flex'>
-                        <Checkbox />
-                        Robe
-                    </div>
-                    <div className='categorie-config flex'>
-                        <Checkbox />
-                        Ensembles
-                    </div>
+                <div className='categorie-config flex'>
+                    <Checkbox />
+                    Robe
+                </div>
+                <div className='categorie-config flex'>
+                    <Checkbox />
+                    Ensemble
+                </div>
+                <div className='categorie-config flex'>
+                    <Checkbox />
+                    Chemise
+                </div>
+                <div className='categorie-config flex'>
+                    <Checkbox />
+                    Burkini
+                </div>
+                <div className='categorie-config flex'>
+                    <Checkbox />
+                    tokem salat
                 </div>
                 {/* Taille */}
-                <div className="item-config categorie-config flex pointer" onClick={() => toggleHeight(tailleRef, isUpTaille, setisUpTaille)}>
+                {/* <div className="item-config categorie-config flex pointer">
                     Taille
-                    <IoIosArrowUp className={`up-item-config ${isUpTaille ? "rotated" : ""}`} />
                 </div>
-                <div className="config" ref={tailleRef}>
-                    <SelectCheck    label={"Taille"}
+                <SelectCheck    label={"Taille"}
                                     value={tailleSelected}
                                     setvalue={settailleSelected}
                                     list={["Tout","36","38","40","42","44","46","48"]}
-                    />
-                </div>
+                /> */}
 
                 {/* Couleur */}
-                <div className="item-config categorie-config flex pointer" onClick={() => toggleHeight(couleurRef, isUpCouleur, setisUpCouleur)}>
+                {/* <div className="item-config categorie-config flex pointer">
                     Couleur
-                    <IoIosArrowUp className={`up-item-config ${isUpCouleur ? "rotated" : ""}`} />
                 </div>
-                <div className="config" ref={couleurRef}>
-                    <SelectCheck    label={"Taille"}
+                <SelectCheck    label={"Taille"}
                                     value={couleurSelected}
                                     setvalue={setcouleurSelected}
                                     list={["Tout","rouge","vert","noir","blue"]}
-                    />
-                </div>
+                /> */}
 
                 {/* Prix */}
-                <div className="item-config categorie-config flex pointer" onClick={() => toggleHeight(prixRef, isUpPrix, setisUpPrix)}>
+                <div className="item-config categorie-config flex pointer">
                     Prix
-                    <IoIosArrowUp className={`up-item-config ${isUpPrix ? "rotated" : ""}`} />
                 </div>
-                <div className="config" ref={prixRef}>
-                    
-                    <div className='categorie-config flex'>
+                <div className='categorie-config flex'>
                         <Checkbox />
                         0-2.000 DZD
-                    </div>
-                    <div className='categorie-config flex'>
-                        <Checkbox />
-                        2.000 DZD - 3.000 DZD
-                        
-                    </div>
-                    <div className='categorie-config flex'>
-                        <Checkbox />
-                        3.000 DZD - 4.000 DZD
-                    </div>
+                </div>
+                <div className='categorie-config flex'>
+                    <Checkbox />
+                    2.000 DZD - 3.000 DZD
+                    
+                </div>
+                <div className='categorie-config flex'>
+                    <Checkbox />
+                    3.000 DZD - 4.000 DZD
                 </div>
             </div>
         )
@@ -202,6 +195,67 @@ function Boutique() {
     }, [filterStatus]);
 
    
+    const [produits, setproduits] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                setLoading(true);
+                const data = await ReadFromSheet({
+                    sheet: "produits",
+                    filter: {}
+                });
+    
+                const cleanedData = (data || [])
+                    .map(item => {
+                        const model = item.Model?.trim();
+                        const couleur = item.couleur?.trim();
+                        const name = `${model} ${couleur}`.toLowerCase();
+
+                        const stock = Number(item.stock);
+                        const price = Number(item.price);
+                        const imageName = item.image?.trim();
+
+                        if (
+                            !model || !couleur || !item.description ||
+                            isNaN(stock) || isNaN(price) ||
+                            stock < 0 || price < 0
+                        ) return null;
+
+                        return {
+                            name,
+                            model,
+                            price,
+                            stock,
+                            description: item.description.trim(),
+                            img: images[imageName] || null
+                        };
+                    })
+                    .filter(item => item !== null);
+
+    
+                setproduits(cleanedData);
+                setError(null);
+                console.log(cleanedData);
+    
+            } catch (error) {
+                console.error("Erreur:", error.message);
+                setError(error.message);
+                setproduits([]);
+            } finally {
+                setLoading(false);
+            }
+        };
+    
+        fetchData();
+    }, []);
+    
+
+    if (loading) return <div style={{padding:"20px"}}>Loading data...</div>;
+    if (error) return <div style={{padding:"20px"}}>Verifier votre connexion s'il vous plait</div>;
+    
     return (
         <div className="Boutique flex">
             
@@ -235,7 +289,7 @@ function Boutique() {
                         </div>
                     }
                 </div>
-                <Products products={products}/>
+                <Products products={produits}/>
             </div>
         </div>
     );

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Outlet } from 'react-router-dom'; // Outlet pour rendre le contenu des sous-routes
+import { Outlet } from 'react-router-dom'; 
 import Header from "./Header/Header";
 import Footer from "./Footer/Footer";
 import { PanierContext } from './Context/PanierContext';

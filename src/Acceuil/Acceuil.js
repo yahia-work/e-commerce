@@ -1,98 +1,92 @@
 import "./Acceuil.css"
+import { useState, useEffect } from 'react';
+import { ReadFromSheet } from '../backend manager/ReadFromSheet';
 
-import livraison from "../images/livraison.png";
-import payment from "../images/payment.png"
-import styles from "../images/styles.png"
-import productImg1 from "../images/productImg1.jpg"
-import productImg8 from "../images/productImg8.jpg"
-import productImg9 from "../images/productImg9.jpg"
-import productImg10 from "../images/productImg10.jpg"
-import productImg11 from "../images/productImg11.jpg"
-import productImg12 from "../images/productImg12.jpg"
-import productImg13 from "../images/productImg13.jpg"
-import productImg14 from "../images/productImg14.jpg"
-import productImg15 from "../images/productImg15.jpg"
 import Products from "../Products/Products";
 
-const products = [
-    {
-        name:"Robe Farawla",
-        model:"Robe",
-        price:2900,
-        img:productImg8,
-        description:"La robe Farawla est confectionnée en tissu Mazirati de haute qualité, offrant confort et élégance. C'est la pièce idéale pour toutes les occasions, alliant style et durabilité."
-    },
-    {
-        name:"Robe Talline",
-        model:"Robe",
-        price:2900,
-        img:productImg9,
-        description:"La robe Talline est confectionnée en tissu Mazirati de haute qualité, offrant confort et élégance. C'est la pièce idéale pour toutes les occasions, alliant style et durabilité."
-    },
-    {
-        name:"Robe Disney",
-        model:"Robe",
-        price:2900,
-        img:productImg10,
-        description:"La robe Disney est confectionnée en tissu Mazirati de haute qualité, offrant confort et élégance. C'est la pièce idéale pour toutes les occasions, alliant style et durabilité."
-    },
-    {
-        name:"Robe Farawla",
-        model:"Robe",
-        price:2900,
-        img:productImg12,
-        description:"La robe Farawla est confectionnée en tissu Mazirati de haute qualité, offrant confort et élégance. C'est la pièce idéale pour toutes les occasions, alliant style et durabilité."
-    },
-    {
-        name:"Robe Farawla",
-        model:"Robe",
-        price:2900,
-        img:productImg11,
-        description:"La robe Farawla est confectionnée en tissu Mazirati de haute qualité, offrant confort et élégance. C'est la pièce idéale pour toutes les occasions, alliant style et durabilité."
-    },
-    {
-        name:"Abaya classique",
-        model:"Abaya",
-        price:2900,
-        img:productImg14,
-        description:"Abaya classique est confectionnée en tissu Mazirati de haute qualité, offrant confort et élégance. C'est la pièce idéale pour toutes les occasions, alliant style et durabilité."
-    },
-    {
-        name:"Robe Farawla",
-        model:"Robe",
-        price:2900,
-        img:productImg1,
-        description:"La robe Farawla est confectionnée en tissu Mazirati de haute qualité, offrant confort et élégance. C'est la pièce idéale pour toutes les occasions, alliant style et durabilité."
-    }
-    ,
-    {
-        name:"Robe Farawla",
-        model:"Robe",
-        price:2900,
-        img:productImg13,
-        description:"La robe Farawla est confectionnée en tissu Mazirati de haute qualité, offrant confort et élégance. C'est la pièce idéale pour toutes les occasions, alliant style et durabilité."
-    }
-]
+import images from '../images/images';
+
 function Acceuil(){
+    const [produits, setproduits] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                setLoading(true);
+                const data = await ReadFromSheet({
+                    sheet: "produits",
+                    filter: {}
+                });
+    
+                const cleanedData = (data || [])
+                    .map(item => {
+                        const model = item.Model?.trim();
+                        const couleur = item.couleur?.trim();
+                        const name = `${model} ${couleur}`.toLowerCase();
+
+                        const stock = Number(item.stock);
+                        const price = Number(item.price);
+                        const imageName = item.image?.trim();
+
+                        if (
+                            !model || !couleur || !item.description ||
+                            isNaN(stock) || isNaN(price) ||
+                            stock < 0 || price < 0
+                        ) return null;
+
+                        return {
+                            name,
+                            model,
+                            price,
+                            stock,
+                            description: item.description.trim(),
+                            img: images[imageName] || null
+                        };
+                    })
+                    .filter(item => item !== null);
+
+    
+                setproduits(cleanedData);
+                setError(null);
+                console.log(cleanedData);
+    
+            } catch (error) {
+                console.error("Erreur:", error.message);
+                setError(error.message);
+                setproduits([]);
+            } finally {
+                setLoading(false);
+            }
+        };
+    
+        fetchData();
+    }, []);
+    
+
+    if (loading) return <div style={{padding:"20px"}}>Loading data...</div>;
+    if (error) return <div style={{padding:"20px"}}>Verifier votre connexion s'il vous plait</div>;
+
     return(
         <div className="acceuil flex">
             <div className="header-acceuil">
                 <div className="essentiel-infos flex pointer">
-                    <img src={livraison} width={50} className="livraison-img"/>
+                    <img src={images["livraison.png"]} width={50} className="livraison-img"/>
                     <div className="essentiel-infos-1">
                         <p>LIVRAISON</p>
                         <div style={{color:"rgb(151, 151, 151)"}}>Disponible 58 wilaya</div>
                     </div>
                 </div>
                 <div className="essentiel-infos flex pointer">
-                    <img src={payment} width={50} className="payment-img"/>
+                    <img src={images["payment.png"]} width={50} className="payment-img"/>
                     <div className="essentiel-infos-1">
                         <p>PAIMENT</p>
                         <div style={{color:"rgb(151, 151, 151)"}}>Paiment main a main</div>
                     </div>
                 </div>
                 <div className="essentiel-infos flex pointer">
-                    <img src={styles} width={50} className="styles-img"/>
+                    <img src={images["styles.png"]} width={50} className="styles-img"/>
                     <div className="essentiel-infos-1">
                         <p>DIFFERENTS STYLES</p>
                         <div style={{color:"rgb(151, 151, 151)"}}>On a tout ce dont vous avez besoin</div>
@@ -103,7 +97,7 @@ function Acceuil(){
                 <h3 style={{fontFamily: "cursive"}}>
                     Y_STORE35
                 </h3>
-                <Products products={products}/>
+                <Products products={produits}/>
             </div>
         </div>
     )

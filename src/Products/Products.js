@@ -10,7 +10,7 @@ function Products({products=[]}){
                 products.map((product,index)=>{
                     return (
                         <div key={index} className="product-card flex">
-                            <Link   to={`/boutique/produit/${product.name}`}
+                            <Link   to={`/boutique/produit/${product.name.replace(/ /g, '_')}`}
                                     state={{ product }}
                             >
                                 <img src={product.img} className="product-img pointer"/>
