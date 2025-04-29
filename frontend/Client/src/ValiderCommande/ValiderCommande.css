@@ -1,0 +1,82 @@
+.valider-commandes{
+    margin: 3% 10%;
+    gap: 30px;
+}
+
+.form-client{
+    width: 60%;
+    gap: 20px;
+    flex-direction: column;
+}
+
+.commandes-infos{
+    width: 40%;
+    flex-direction: column;
+    gap: 20px;
+}
+.commandes-infos-validation{
+    border: 1px solid rgb(196, 196, 196);
+    padding: 20px 40px ;  
+}
+.element-final-commande{
+    justify-content: space-between; 
+    padding: 10px 0px;
+}
+.head-final-commande{
+    justify-content: space-between;
+    border-bottom: 1px solid rgb(234, 234, 234);
+    padding: 15px 0px;
+}
+.panier-vide{ 
+    width: 100%;
+    margin-top: 100px;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-family: cursive;
+    flex-direction: column;
+    gap: 20px;
+} 
+
+@media (max-width: 1200px){
+    .valider-commandes{
+        margin: 3% 3%;
+        gap: 30px;
+    }
+}
+@media (max-width: 1000px){
+    .valider-commandes{
+        margin: 3% 10%;
+        gap: 30px;
+        flex-direction: column;
+    }
+    .form-client{
+        width: 100%;
+        gap: 20px;
+        flex-direction: column;
+    }
+    
+    .commandes-infos{
+        width: 100%;
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+@media (max-width: 700px){
+    .valider-commandes{
+        margin: 10% 3%;
+        gap: 30px;
+        flex-direction: column;
+    }
+    .form-client{
+        width: 100%;
+        gap: 20px;
+        flex-direction: column;
+    }
+    
+    .commandes-infos{
+        width: 100%;
+        flex-direction: column;
+        gap: 20px;
+    }
+}

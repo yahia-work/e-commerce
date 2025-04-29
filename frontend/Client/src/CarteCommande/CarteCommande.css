@@ -1,0 +1,99 @@
+
+.Carte-Commande{
+    margin: 0% 10% 10% 10%;
+    gap: 100px;
+}
+ 
+.products-commandes {
+    flex-direction: column;
+    width: 60%;
+}
+.calculer-total-commande {
+    width: 50%; 
+    flex-direction: column;
+}
+.commande-details{
+   
+    padding: 30px;
+    background-color: rgb(245, 245, 245); 
+    flex-direction: column;
+    max-height: 470px;
+}
+
+.product-in-commandes{
+    padding:20px 0px;
+    justify-content: space-between;
+    border-bottom: 1px solid rgb(215, 215, 215);
+}
+
+.product-in-commandes img{
+    width: 20%;
+    border-radius: 5px;
+}
+
+.sous-total-comamndes{
+    padding:20px 0px;
+    border-bottom: 1px solid rgb(215, 215, 215);
+    font-family: cursive;
+}
+
+.expiditions-calculate{
+    padding:20px 0px;
+    font-size: 15px;
+    border-bottom: 1px solid rgb(215, 215, 215);
+    flex-direction: column;
+    gap: 15px;
+}
+.calculer-frais{
+    color: rgb(95, 95, 95);
+    text-decoration: underline;
+    text-underline-offset: 3px; 
+} 
+.calculer{
+    flex-direction: column;
+    gap: 10px;
+}
+
+.panier-vide{ 
+    width: 100%;
+    margin-top: 100px;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-family: cursive;
+    flex-direction: column;
+    gap: 20px;
+} 
+
+@media (max-width: 1200px) {
+    .Carte-Commande{
+        margin: 0% 2% 10% 2%;
+        gap: 100px; 
+    }
+}
+@media (max-width: 900px) {
+    .Carte-Commande{
+        margin: 0% 2% 10% 2%;
+        gap: 100px; 
+        flex-direction: column;
+    }
+    .products-commandes {
+        flex-direction: column;
+        width: 100%;
+    }
+    .calculer-total-commande {
+        width: 100%; 
+        flex-direction: column; 
+    }
+    .commande-details{
+   
+        padding: 30px;
+        background-color: rgb(245, 245, 245); 
+        flex-direction: column;
+        max-height: 470px;
+    }
+    .product-in-commandes img{
+        width: 20%;
+        border-radius: 5px;
+    }
+}
