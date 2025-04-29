@@ -13,8 +13,8 @@ function Prix() {
     const [error, setError] = useState(null);
 
     const columnsConfig = [
-        { key: 'code wilaya', label: 'Code Wilaya' },
-        { key: 'nom wilaya', label: 'Nom de la wilaya' },
+        { key: 'code wilaya', label: 'Code' },
+        { key: 'nom wilaya', label: 'wilaya' },
         { key: 'stop desk', label: 'Stop Desk' },
         { key: 'a domicile', label: 'A domicile' },
     ];
