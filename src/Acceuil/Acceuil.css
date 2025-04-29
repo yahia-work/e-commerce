@@ -69,6 +69,20 @@
 .product-price{
     color: #767676;
 }
+
+
+
+.header-acceuil-filter{
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+
+.filter-autocomplet{
+    width: 30%;
+}
+
 @media (max-width: 1300px){
     .header-acceuil{
         padding: 20px 10%;
@@ -82,6 +96,9 @@
         justify-content: center;
         align-items: center;
         border-bottom: 1px solid rgb(235, 235, 235);
+    }
+    .filter-autocomplet{
+        width: 100%;
     }
 }
 
@@ -114,6 +131,16 @@
         font-family: cursive;
         line-height: 1.5;
     }
+    .header-acceuil-filter{
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .filter-autocomplet{
+        width: 100%;
+    }
 }
 @media (max-width: 750px){
     .product-card{
@@ -126,6 +153,9 @@
     .products-card{
         flex-wrap: wrap;
         gap: 20px;
+        width: 100%;
+    }
+    .filter-autocomplet{
         width: 100%;
     }
 }

@@ -113,7 +113,6 @@ function Header(){
                     </div>
                     <div className="list-option-2 flex">
                         <Link to="/" className="link pointer" onClick={handelmenuclose}>Acceuil</Link>
-                        <Link to="/boutique" className="link pointer" onClick={handelmenuclose}>Boutique</Link>
                         <Link to="/livraison" className="link pointer" onClick={handelmenuclose}>Livrasion</Link>
                         <Link to="/apropre" className="link pointer" onClick={handelmenuclose}>À propos</Link>
                         <Link to="/faq" className="link pointer" onClick={handelmenuclose}>FAQs</Link>
@@ -124,7 +123,6 @@ function Header(){
             }
             <div className="list-option flex">
                 <Link to="/" className="link pointer">Acceuil</Link>
-                <Link to="/boutique" className="link pointer">Boutique</Link>
                 <Link to="/livraison" className="link pointer">Livrasion</Link>
                 <Link to="/apropre" className="link pointer">À propos</Link>
                 <Link to="/faq" className="link pointer">FAQs</Link>

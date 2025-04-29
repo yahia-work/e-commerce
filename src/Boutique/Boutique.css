@@ -1,8 +1,9 @@
 
 
 .Boutique{
-    padding: 5% 10%;
+    padding: 0% 10%;
     gap: 50px;
+    flex-direction: column;
 }
 
 .configuration{
@@ -50,7 +51,7 @@
 /*  ----------------- models -------------------------*/
 
 .models{
-    width: 80%;
+    width: 100%;
     flex-direction: column;
     gap: 50px;
 }
@@ -93,9 +94,7 @@
         gap: 15px;
         flex-direction: column;
     }
-    .select-filter{
-        display: none;
-    }
+    
 
     .models{
         width: 100%;

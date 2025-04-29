@@ -21,8 +21,7 @@ root.render(
     <Routes>
       <Route path="/" element={<App />}>
         <Route index element={<Acceuil />} />
-        <Route path="boutique" element={<Boutique />} />
-        <Route path="boutique/produit/:productName" element={<Product />} />
+        <Route path="/produit/:productName" element={<Product />} />
         <Route path="apropre" element={<Apropre />} />
         <Route path="faq" element={<Faq />} />
         <Route path="contact" element={<Contact />} />

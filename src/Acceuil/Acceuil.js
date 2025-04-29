@@ -1,8 +1,9 @@
 import "./Acceuil.css"
 import { useState, useEffect } from 'react';
 import { ReadFromSheet } from '../backend manager/ReadFromSheet';
-
+import SelectCheck from "../components/SelectCheck";
 import Products from "../Products/Products";
+import AutocompleteSelect from '../components/Autocomplet';
 
 import images from '../images/images';
 
@@ -65,6 +66,9 @@ function Acceuil(){
     }, []);
     
 
+
+    const [filterSelected,setfilterSelected] = useState("Tous");
+    
     if (loading) return <div style={{padding:"20px"}}>Loading data...</div>;
     if (error) return <div style={{padding:"20px"}}>Verifier votre connexion s'il vous plait</div>;
 
@@ -85,18 +89,21 @@ function Acceuil(){
                         <div style={{color:"rgb(151, 151, 151)"}}>Paiment main a main</div>
                     </div>
                 </div>
-                <div className="essentiel-infos flex pointer">
-                    <img src={images["styles.png"]} width={50} className="styles-img"/>
-                    <div className="essentiel-infos-1">
-                        <p>DIFFERENTS STYLES</p>
-                        <div style={{color:"rgb(151, 151, 151)"}}>On a tout ce dont vous avez besoin</div>
-                    </div>
-                </div>
             </div>
             <div className="container-products flex">
-                <h3 style={{fontFamily: "cursive"}}>
-                    Y_STORE35
-                </h3>
+                <div className="header-acceuil-filter flex" >
+                    <h3 style={{fontFamily: "cursive"}} >
+                        Y_STORE35 Collection
+                    </h3>
+                    <AutocompleteSelect     
+                        label={"Filter"} 
+                        value={filterSelected} 
+                        setValue={setfilterSelected}
+                        options={["Tous","Abaya","Robe","Ensemble"]}   
+                        className="filter-autocomplet"
+                    /> 
+                </div>
+                
                 <Products products={produits}/>
             </div>
         </div>

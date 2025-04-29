@@ -8,104 +8,82 @@ import { IoFilter } from "react-icons/io5";
 import { GoX } from "react-icons/go";
 import { ReadFromSheet } from '../backend manager/ReadFromSheet';
 
-import productImg1 from "../images/productImg1.jpg"
-import productImg8 from "../images/productImg8.jpg"
-import productImg9 from "../images/productImg9.jpg"
-import productImg10 from "../images/productImg10.jpg"
-import productImg11 from "../images/productImg11.jpg"
-import productImg12 from "../images/productImg12.jpg"
-import productImg13 from "../images/productImg13.jpg"
-import productImg14 from "../images/productImg14.jpg"
-import productImg15 from "../images/productImg15.jpg"
-
 import Products from "../Products/Products";
 
 
 import images from '../images/images';
 
-const products = [
-    {
-        id:1,
-        name:"Robe Farawla",
-        model:"Robe",
-        price:2900,
-        img:productImg8,
-        description:"La robe Farawla est confectionnée en tissu Mazirati de haute qualité, offrant confort et élégance. C'est la pièce idéale pour toutes les occasions, alliant style et durabilité."
-    },
-    {
-        id:2,
-        name:"Robe Talline",
-        model:"Robe",
-        price:2900,
-        img:productImg9,
-        description:"La robe Talline est confectionnée en tissu Mazirati de haute qualité, offrant confort et élégance. C'est la pièce idéale pour toutes les occasions, alliant style et durabilité."
-    },
-    {
-        id:3,
-        name:"Robe Disney",
-        model:"Robe",
-        price:2900,
-        img:productImg10,
-        description:"La robe Disney est confectionnée en tissu Mazirati de haute qualité, offrant confort et élégance. C'est la pièce idéale pour toutes les occasions, alliant style et durabilité."
-    },
-    {
-        id:4,
-        name:"Robe Farawla",
-        model:"Robe",
-        price:2900,
-        img:productImg12,
-        description:"La robe Farawla est confectionnée en tissu Mazirati de haute qualité, offrant confort et élégance. C'est la pièce idéale pour toutes les occasions, alliant style et durabilité."
-    },
-    {
-        id:5,
-        name:"Robe Farawla",
-        model:"Robe",
-        price:2900,
-        img:productImg11,
-        description:"La robe Farawla est confectionnée en tissu Mazirati de haute qualité, offrant confort et élégance. C'est la pièce idéale pour toutes les occasions, alliant style et durabilité."
-    },
-    {
-        id:6,
-        name:"Abaya classique",
-        model:"Abaya",
-        price:2900,
-        img:productImg14,
-        description:"Abaya classique est confectionnée en tissu Mazirati de haute qualité, offrant confort et élégance. C'est la pièce idéale pour toutes les occasions, alliant style et durabilité."
-    },
-    {
-        id:7,
-        name:"Robe Farawla",
-        model:"Robe",
-        price:2900,
-        img:productImg1,
-        description:"La robe Farawla est confectionnée en tissu Mazirati de haute qualité, offrant confort et élégance. C'est la pièce idéale pour toutes les occasions, alliant style et durabilité."
-    }
-    ,
-    {
-        id:8,
-        name:"Robe Farawla",
-        model:"Robe",
-        price:2900,
-        img:productImg13,
-        description:"La robe Farawla est confectionnée en tissu Mazirati de haute qualité, offrant confort et élégance. C'est la pièce idéale pour toutes les occasions, alliant style et durabilité."
-    }
-]
+// const products = [
+//     {
+//         id:1,
+//         name:"Robe Farawla",
+//         model:"Robe",
+//         price:2900,
+//         img:productImg8,
+//         description:"La robe Farawla est confectionnée en tissu Mazirati de haute qualité, offrant confort et élégance. C'est la pièce idéale pour toutes les occasions, alliant style et durabilité."
+//     },
+//     {
+//         id:2,
+//         name:"Robe Talline",
+//         model:"Robe",
+//         price:2900,
+//         img:productImg9,
+//         description:"La robe Talline est confectionnée en tissu Mazirati de haute qualité, offrant confort et élégance. C'est la pièce idéale pour toutes les occasions, alliant style et durabilité."
+//     },
+//     {
+//         id:3,
+//         name:"Robe Disney",
+//         model:"Robe",
+//         price:2900,
+//         img:productImg10,
+//         description:"La robe Disney est confectionnée en tissu Mazirati de haute qualité, offrant confort et élégance. C'est la pièce idéale pour toutes les occasions, alliant style et durabilité."
+//     },
+//     {
+//         id:4,
+//         name:"Robe Farawla",
+//         model:"Robe",
+//         price:2900,
+//         img:productImg12,
+//         description:"La robe Farawla est confectionnée en tissu Mazirati de haute qualité, offrant confort et élégance. C'est la pièce idéale pour toutes les occasions, alliant style et durabilité."
+//     },
+//     {
+//         id:5,
+//         name:"Robe Farawla",
+//         model:"Robe",
+//         price:2900,
+//         img:productImg11,
+//         description:"La robe Farawla est confectionnée en tissu Mazirati de haute qualité, offrant confort et élégance. C'est la pièce idéale pour toutes les occasions, alliant style et durabilité."
+//     },
+//     {
+//         id:6,
+//         name:"Abaya classique",
+//         model:"Abaya",
+//         price:2900,
+//         img:productImg14,
+//         description:"Abaya classique est confectionnée en tissu Mazirati de haute qualité, offrant confort et élégance. C'est la pièce idéale pour toutes les occasions, alliant style et durabilité."
+//     },
+//     {
+//         id:7,
+//         name:"Robe Farawla",
+//         model:"Robe",
+//         price:2900,
+//         img:productImg1,
+//         description:"La robe Farawla est confectionnée en tissu Mazirati de haute qualité, offrant confort et élégance. C'est la pièce idéale pour toutes les occasions, alliant style et durabilité."
+//     }
+//     ,
+//     {
+//         id:8,
+//         name:"Robe Farawla",
+//         model:"Robe",
+//         price:2900,
+//         img:productImg13,
+//         description:"La robe Farawla est confectionnée en tissu Mazirati de haute qualité, offrant confort et élégance. C'est la pièce idéale pour toutes les occasions, alliant style et durabilité."
+//     }
+// ]
 
 function Boutique() {
-    const [tailleSelected,settailleSelected] = useState("Tout");
-    const [couleurSelected,setcouleurSelected] = useState("Tout");
     const [filterSelected,setfilterSelected] = useState("Tri par default");
 
-    const toggleHeight = (ref, isExpanded, setState) => {
-        if (ref.current) {
-            if (!isExpanded) {
-                ref.current.style.height = ref.current.scrollHeight + "px";
-            } else {
-                ref.current.style.height = "0px";
-            }
-            setState(!isExpanded);
-        }
-    };
     
     const Config = ({className=""})=>{
        
@@ -116,7 +94,7 @@ function Boutique() {
                     Categorie
                 </div>
                 <div className='categorie-config flex'>
-                        <Checkbox />
+                    <Checkbox />
                         Abaya
                     </div>
                 <div className='categorie-config flex'>
@@ -139,25 +117,6 @@ function Boutique() {
                     <Checkbox />
                     tokem salat
                 </div>
-                {/* Taille */}
-                {/* <div className="item-config categorie-config flex pointer">
-                    Taille
-                </div>
-                <SelectCheck    label={"Taille"}
-                                    value={tailleSelected}
-                                    setvalue={settailleSelected}
-                                    list={["Tout","36","38","40","42","44","46","48"]}
-                /> */}
-
-                {/* Couleur */}
-                {/* <div className="item-config categorie-config flex pointer">
-                    Couleur
-                </div>
-                <SelectCheck    label={"Taille"}
-                                    value={couleurSelected}
-                                    setvalue={setcouleurSelected}
-                                    list={["Tout","rouge","vert","noir","blue"]}
-                /> */}
 
                 {/* Prix */}
                 <div className="item-config categorie-config flex pointer">
@@ -258,8 +217,33 @@ function Boutique() {
     
     return (
         <div className="Boutique flex">
-            
-            <Config className="configuration flex"/>
+            <div className="header-acceuil">
+                <div className="essentiel-infos flex pointer">
+                    <img src={images["livraison.png"]} width={50} className="livraison-img"/>
+                    <div className="essentiel-infos-1">
+                        <p>LIVRAISON</p>
+                        <div style={{color:"rgb(151, 151, 151)"}}>Disponible 58 wilaya</div>
+                    </div>
+                </div>
+                <div className="essentiel-infos flex pointer">
+                    <img src={images["payment.png"]} width={50} className="payment-img"/>
+                    <div className="essentiel-infos-1">
+                        <p>PAIMENT</p>
+                        <div style={{color:"rgb(151, 151, 151)"}}>Paiment main a main</div>
+                    </div>
+                </div>
+                <div className="essentiel-infos flex pointer">
+                    <img src={images["styles.png"]} width={50} className="styles-img"/>
+                    <div className="essentiel-infos-1">
+                        <p>DIFFERENTS STYLES</p>
+                        <div style={{color:"rgb(151, 151, 151)"}}>On a tout ce dont vous avez besoin</div>
+                    </div>
+                </div>
+            </div>
+            <h3 style={{fontFamily: "cursive"}} >
+                Y_STORE35
+            </h3>
+            {/* <Config className="configuration flex"/> */}
             <div className="models flex">
                 <div className="header-models flex">
                     <div>

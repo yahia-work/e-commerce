@@ -4,12 +4,13 @@ import TextField from '@mui/material/TextField';
 
 
 
-function AutocompleteSelect({label,value,setValue,options,style={}}) {
+function AutocompleteSelect({label,value,setValue,options,style={},className=''}) {
  
   const [inputValue, setInputValue] = React.useState('');
 
   return (
     <Autocomplete
+      className={className}
       value={value}
       style={style}
       onChange={(event, newValue) => {
